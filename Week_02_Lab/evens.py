@@ -1,7 +1,7 @@
 import pandas as pd
 print("Pandas is ready.")
 
-data = pd.read_excel("/home/mp/BIT246/Week_02_Lab/Even_Odd_Numbers.xlsx", sheet_name="Numbers")
+data = pd.read_excel("Week_02_Lab/Even_Odd_Numbers.xlsx", sheet_name="Numbers")
 
 def isEven(input_num):
     return input_num % 2 == 0
