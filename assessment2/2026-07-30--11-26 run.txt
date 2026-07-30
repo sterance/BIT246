@@ -1,0 +1,100 @@
+(venv) ➜  assessment2 git:(main) ✗ python main.py                           
+=== Step 1: Load ===
+Shape: (381109, 12)
+<class 'pandas.DataFrame'>
+RangeIndex: 381109 entries, 0 to 381108
+Data columns (total 12 columns):
+ #   Column                Non-Null Count   Dtype  
+---  ------                --------------   -----  
+ 0   id                    381109 non-null  int64  
+ 1   Gender                381109 non-null  str    
+ 2   Age                   381109 non-null  int64  
+ 3   Driving_License       381109 non-null  int64  
+ 4   Region_Code           381109 non-null  float64
+ 5   Previously_Insured    381109 non-null  int64  
+ 6   Vehicle_Age           381109 non-null  str    
+ 7   Vehicle_Damage        381109 non-null  str    
+ 8   Annual_Premium        381109 non-null  float64
+ 9   Policy_Sales_Channel  381109 non-null  float64
+ 10  Vintage               381109 non-null  int64  
+ 11  Response              381109 non-null  int64  
+dtypes: float64(3), int64(6), str(3)
+memory usage: 34.9 MB
+None
+                  id            Age  Driving_License    Region_Code  Previously_Insured  Annual_Premium  Policy_Sales_Channel        Vintage       Response
+count  381109.000000  381109.000000    381109.000000  381109.000000       381109.000000   381109.000000         381109.000000  381109.000000  381109.000000
+mean   190555.000000      38.822584         0.997869      26.388807            0.458210    30564.389581            112.034295     154.347397       0.122563
+std    110016.836208      15.511611         0.046110      13.229888            0.498251    17213.155057             54.203995      83.671304       0.327936
+min         1.000000      20.000000         0.000000       0.000000            0.000000     2630.000000              1.000000      10.000000       0.000000
+25%     95278.000000      25.000000         1.000000      15.000000            0.000000    24405.000000             29.000000      82.000000       0.000000
+50%    190555.000000      36.000000         1.000000      28.000000            0.000000    31669.000000            133.000000     154.000000       0.000000
+75%    285832.000000      49.000000         1.000000      35.000000            1.000000    39400.000000            152.000000     227.000000       0.000000
+max    381109.000000      85.000000         1.000000      52.000000            1.000000   540165.000000            163.000000     299.000000       1.000000
+   id  Gender  Age  Driving_License  Region_Code  Previously_Insured Vehicle_Age Vehicle_Damage  Annual_Premium  Policy_Sales_Channel  Vintage  Response
+0   1    Male   44                1         28.0                   0   > 2 Years            Yes         40454.0                  26.0      217         1
+1   2    Male   76                1          3.0                   0    1-2 Year             No         33536.0                  26.0      183         0
+2   3    Male   47                1         28.0                   0   > 2 Years            Yes         38294.0                  26.0       27         1
+3   4    Male   21                1         11.0                   1    < 1 Year             No         28619.0                 152.0      203         0
+4   5  Female   29                1         41.0                   1    < 1 Year             No         27496.0                 152.0       39         0
+
+=== Step 2: Exploration Charts ===
+Response
+0    0.877437
+1    0.122563
+Name: proportion, dtype: float64
+
+=== Step 3: Data Cleaning ===
+Shape after cleaning: (370789, 12)
+
+=== Step 4: Data Transformation ===
+   id  Gender       Age  Driving_License  Region_Code  Previously_Insured  Vehicle_Age  Vehicle_Damage  Annual_Premium  Policy_Sales_Channel   Vintage  Response
+0   1       1  0.345182                1         28.0                   0            2               1        0.758959                  26.0  0.748826         1
+1   2       1  2.417701                1          3.0                   0            0               0        0.289720                  26.0  0.342470         0
+2   3       1  0.539480                1         28.0                   0            2               1        0.612449                  26.0 -1.521990         1
+3   4       1 -1.144442                1         11.0                   1            1               0       -0.043793                 152.0  0.581503         0
+4   5       0 -0.626312                1         41.0                   1            1               0       -0.119965                 152.0 -1.378570         0
+
+=== Step 5: Train/Test Split ===
+X_train: (296631, 10) | X_test: (74158, 10)
+y_train class balance:
+Response
+0    0.878219
+1    0.121781
+Name: proportion, dtype: float64
+
+=== Step 6 & 7: Train Models ===
+RF Baseline trained: 100 trees, max_depth = None
+RF Tuned/Balanced trained: 200 trees, max_depth = 10
+
+=== Step 8: Evaluate Models ===
+--- RF Baseline ---
+Accuracy: 0.8667979179589526
+Precision: 0.35774269398723546
+Recall: 0.11792713985162219
+F1: 0.177381745502998
+ROC-AUC: 0.8339989535909054
+[[63215  1912]
+ [ 7966  1065]]
+--- RF Tuned/Balanced ---
+Accuracy: 0.6902963941853879
+Precision: 0.27420609202851587
+Recall: 0.9369947957036873
+F1: 0.4242560978666867
+ROC-AUC: 0.8541953429740559
+[[42729 22398]
+ [  569  8462]]
+Saved ROC curve comparison to 'charts/07_roc_curve_comparison.png'
+
+=== Step 9: Feature Importance ===
+Saved feature importance chart to 'charts/08_feature_importance.png'
+Vehicle_Damage          0.447276
+Previously_Insured      0.323862
+Age                     0.102212
+Policy_Sales_Channel    0.065552
+Vehicle_Age             0.032381
+Region_Code             0.010960
+Annual_Premium          0.008006
+Vintage                 0.006414
+Gender                  0.002517
+Driving_License         0.000821
+dtype: float64
