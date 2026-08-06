@@ -1,0 +1,5 @@
+This line contains the word Python
+This line does not
+Neither does this
+Some lines contain the word Python
+And others do not
