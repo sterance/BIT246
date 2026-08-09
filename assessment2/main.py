@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 from create_charts import generate_exploration_charts
-from clean_data import clean_data
+from clean_data import clean_data, demonstrate_imputation
 from transform_data import transform_data
 from split_data import split_data
 from train_models import train_baseline_rf, train_balanced_rf
@@ -22,6 +22,9 @@ print("\n=== Step 2: Exploration Charts ===")
 generate_exploration_charts(df)
 
 print("\n=== Step 3: Data Cleaning ===")
+print("\n--- Imputation Strategy Demonstration (simulated, data unchanged) ---")
+demonstrate_imputation(df)
+
 df = clean_data(df)
 print("Shape after cleaning:", df.shape)
 
