@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 from create_charts import generate_exploration_charts
 from clean_data import clean_data
@@ -8,7 +9,9 @@ from train_models import train_baseline_rf, train_balanced_rf
 from evaluate_models import evaluate, plot_roc_comparison
 from feature_importance import plot_feature_importance
 
-df = pd.read_csv("hicsp.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv(os.path.join(BASE_DIR, "hicsp.csv"))
+
 print("=== Step 1: Load ===")
 print("Shape:", df.shape)
 print(df.info())

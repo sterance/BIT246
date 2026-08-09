@@ -3,8 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-def generate_exploration_charts(df, output_dir="charts"):
+def generate_exploration_charts(df, output_dir=os.path.join(BASE_DIR, "charts")):
     os.makedirs(output_dir, exist_ok=True)
 
     # Missing values

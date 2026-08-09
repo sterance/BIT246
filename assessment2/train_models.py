@@ -1,6 +1,5 @@
 from sklearn.ensemble import RandomForestClassifier
 
-
 def train_baseline_rf(X_train, y_train):
     rf1 = RandomForestClassifier(random_state=42)
     rf1.fit(X_train, y_train)

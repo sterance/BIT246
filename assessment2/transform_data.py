@@ -1,6 +1,5 @@
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
-
 def transform_data(df):
     # Encode categorical variables
     label_cols = ["Gender", "Vehicle_Age", "Vehicle_Damage"]

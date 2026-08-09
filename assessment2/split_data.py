@@ -1,6 +1,5 @@
 from sklearn.model_selection import train_test_split
 
-
 def split_data(df):
     X = df.drop(columns=["id", "Response"])
     y = df["Response"]

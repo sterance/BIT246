@@ -5,6 +5,7 @@ from sklearn.metrics import (
     f1_score, roc_auc_score, confusion_matrix, roc_curve
 )
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def evaluate(name, y_test, y_pred, y_proba):
     print(f"--- {name} ---")
@@ -15,8 +16,7 @@ def evaluate(name, y_test, y_pred, y_proba):
     print("ROC-AUC:", roc_auc_score(y_test, y_proba))
     print(confusion_matrix(y_test, y_pred))
 
-
-def plot_roc_comparison(y_test, y_proba1, y_proba2, output_dir="charts"):
+def plot_roc_comparison(y_test, y_proba1, y_proba2, output_dir=os.path.join(BASE_DIR, "charts")):
     os.makedirs(output_dir, exist_ok=True)
     fpr1, tpr1, _ = roc_curve(y_test, y_proba1)
     fpr2, tpr2, _ = roc_curve(y_test, y_proba2)
