@@ -1,0 +1,21 @@
+id,road,weather,speed,helmet,signal,severity
+1,MG Road,Sunny,77,No,Green,High
+2,NH 44,Rainy,77,Yes,Red,High
+3,Park Street,Sunny,67,No,Green,High
+4,MG Road,Sunny,43,Yes,Red,Low
+5,Park Street,Sunny,65,Yes,Red,Medium
+6,Park Street,Foggy,44,No,Red,High
+7,Ring Road,Sunny,78,Yes,Red,Medium
+8,Station Road,Cloudy,47,Yes,Green,Low
+9,Ring Road,Sunny,35,No,Green,High
+10,Ring Road,Cloudy,68,No,Green,High
+11,Station Road,Sunny,54,Yes,Red,Medium
+12,Ring Road,Cloudy,66,Yes,Red,Medium
+13,MG Road,Sunny,72,Yes,Yellow,Medium
+14,MG Road,Rainy,85,Yes,Yellow,High
+15,Ring Road,Foggy,70,No,Green,High
+16,Ring Road,Cloudy,43,No,Red,High
+17,MG Road,Rainy,64,Yes,Green,High
+18,Station Road,Foggy,47,Yes,Red,Medium
+19,Ring Road,Sunny,44,Yes,Yellow,Medium
+20,Station Road,Cloudy,34,Yes,Red,Low
