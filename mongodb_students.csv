@@ -1,0 +1,7 @@
+name,subject,mark,year_level,hobbies,contact
+Emma,Python,85,5,,
+Noah,Database,82,5,,
+Mia,Python,94,5,,
+Oliver,Python,80,5,,
+Liam,Python,90,5,"['football', 'drawing', 'coding']",
+Sophie,Database,86,5,,"{'city': 'Melbourne', 'country': 'Australia'}"

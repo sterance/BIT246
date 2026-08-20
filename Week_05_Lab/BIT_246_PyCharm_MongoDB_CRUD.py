@@ -59,12 +59,15 @@ This program uses getpass(), so your connection string is not shown on screen.
 # STEP 1: IMPORT THE TOOLS
 # ------------------------------------------------------------
 
-from getpass import getpass
+# from getpass import getpass
 from pprint import pprint
 
 import pandas as pd
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
+
+import os
+from dotenv import load_dotenv
 
 print("\nSTEP 1")
 print("MongoDB tools are ready.")
@@ -73,7 +76,7 @@ print("MongoDB tools are ready.")
 # ------------------------------------------------------------
 # STEP 2: GET THE MONGODB ATLAS CONNECTION STRING
 # ------------------------------------------------------------
-
+'''
 print("""
 STEP 2
 Paste your MongoDB Atlas connection string below.
@@ -83,8 +86,14 @@ mongodb+srv://USERNAME:PASSWORD@cluster-name.mongodb.net/
 
 Your real connection string will be different.
 """)
+'''
+# MONGO_URI = getpass("MongoDB Atlas connection string: ") COMMENTED OUT BECAUSE USING VALUE IN .env INSTEAD OF GETPASS
+load_dotenv()
 
-MONGO_URI = getpass("MongoDB Atlas connection string: ")
+MONGO_URI = os.getenv("MONGO_URI")
+
+if not MONGO_URI:
+    raise ValueError("MONGO_URI not found. Check your .env file.")
 
 
 # ------------------------------------------------------------
