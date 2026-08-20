@@ -5,6 +5,7 @@ import seaborn as sns
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# USES model.feature_importances_ FROM pandas LIBRARY, PULLING IMPORTANCE SCORES FROM THE OUTPUTTED DATA POST-TRAINING
 def plot_feature_importance(model, feature_names, output_dir=os.path.join(BASE_DIR, "charts")):
     os.makedirs(output_dir, exist_ok=True)
     importances = pd.Series(model.feature_importances_, index=feature_names).sort_values(ascending=False)

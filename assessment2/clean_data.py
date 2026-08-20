@@ -45,20 +45,20 @@ def demonstrate_imputation(df, numeric_col="Vintage", categorical_col="Gender", 
     }
 
 def clean_data(df):
-    # --- Cleaning technique 1: remove exact duplicate records ---
-    before = len(df)
-    df = df.drop_duplicates(subset=df.columns.difference(["id"]))
-    removed_duplicates = before - len(df)
+    # REMOVE DUPLICATE ROWS TO PREVENT DOUBLE COUNTING
+    before = len(df) # the count of records before cleaning
+    df = df.drop_duplicates(subset=df.columns.difference(["id"])) # remove duplicates, ignoring 'id' (otherwise nothing would ever be dropped as each id is unique)
+    removed_duplicates = before - len(df) # count of duplicates that have been removed
     print(f"[Cleaning] Removed {removed_duplicates} duplicate rows "
           f"({removed_duplicates / before:.2%} of data).")
 
-    # --- Cleaning technique 2: remove outliers/inconsistencies
-    Q1 = df["Annual_Premium"].quantile(0.25)
-    Q3 = df["Annual_Premium"].quantile(0.75)
-    IQR = Q3 - Q1
-    lower = Q1 - 1.5 * IQR
-    upper = Q3 + 1.5 * IQR
-    before = len(df)
+    # TRIMS OUTLIERS TO PREVENT THE SKEWING OF RESULTS
+    Q1 = df["Annual_Premium"].quantile(0.25) # defines bottom quantile
+    Q3 = df["Annual_Premium"].quantile(0.75) # defines top quantile
+    IQR = Q3 - Q1 # only values inside the interquantile range
+    lower = Q1 - 1.5 * IQR # lower bounds
+    upper = Q3 + 1.5 * IQR # upper bounds
+    before = len(df) # count before trimming
     df = df[(df["Annual_Premium"] >= lower) & (df["Annual_Premium"] <= upper)]
     print(f"[Cleaning] Removed {before - len(df)} outlier rows from "
           f"Annual_Premium (IQR bounds: {lower:.2f}-{upper:.2f}).")

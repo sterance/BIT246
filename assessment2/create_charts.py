@@ -5,6 +5,7 @@ import seaborn as sns
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# USES VARIOUS matplotlib.pyplot FUNCTIONS TO TURN RAW DATA INTO CHART PNGS
 def generate_exploration_charts(df, output_dir=os.path.join(BASE_DIR, "charts")):
     os.makedirs(output_dir, exist_ok=True)
 
@@ -34,7 +35,7 @@ def generate_exploration_charts(df, output_dir=os.path.join(BASE_DIR, "charts"))
         plt.savefig(f"{output_dir}/04_boxplot_{col}.png", dpi=150, bbox_inches="tight")
         plt.close()
 
-    # Correlation heatmap (numeric columns only)
+    # Correlation heatmap
     numeric_df = df.select_dtypes(include=[np.number])
     sns.heatmap(numeric_df.corr(), annot=True, cmap="coolwarm")
     plt.title("Correlation Heatmap")
